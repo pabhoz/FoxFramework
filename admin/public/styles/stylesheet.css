@@ -1,0 +1,151 @@
+@font-face {
+    font-family: roboto;
+    src: url(../assets/fonts/roboto/Roboto-Regular.ttf);
+}
+
+body{
+    
+    background-color: #d5dce2;
+    background-size: 100%;
+    
+}
+
+#formWrapper{
+    margin-top: 5%;
+}
+input{
+    display: inline-block;
+    padding: 10px;
+    width: 100%;
+}
+textarea{
+    display: inline-block;
+    padding: 10px;
+    width: 100%;
+}
+
+input[type=submit]{
+    padding: 10px;
+    width: 100%;
+}
+input[type=checkbox]{
+    padding: 1px;
+    float: left;
+    width: 6%;
+    
+}
+input[type=radio]{
+    padding: 1px;
+    display: inline-block;
+    width: 6%;
+    
+}
+span{
+    margin-left: 2%;
+}
+#idCargoSelcted{
+     width: 100%;
+}
+.formWrapper{
+    width: 600px;
+    background-color: white;
+    margin-bottom: 50px;
+    margin: auto auto;
+}
+#signInBtn{
+    background-color:#af2b44;
+    color: white;
+}
+.formTitle{
+    color: white;
+    font-weight: bold;
+    font-size: 180%;
+    text-align: center;
+    width: 100%;
+    background-color:#DD3555;
+    
+}
+
+.formSubTitle{
+    color: white;
+    font-weight: bold;
+    font-size: 140%;
+    text-align: center;
+    width: 100%;
+    background-color:#af2b44;
+    border-bottom: #902337;
+}
+.txtArea{
+    width: 100%;
+    resize: none;
+}
+.formSubTitle:hover{
+    cursor: pointer; 
+    cursor: hand;
+    background-color:#902337;
+}
+#nextFormacion{
+    float: right;
+}
+.singInValue{
+    width: 100%;
+}
+
+.login-logo{
+   text-align: center;
+   margin-bottom: 1%;
+}
+.itemEntrevista{
+    margin-bottom: 1%;
+    margin-top: 1%;
+}
+
+.smallText{
+    font-size: 80%;
+    margin: 8px 0px; /* arriba, derecha, abajo, izquierda*/
+                     /* arriba/abajo , derecha/izquierda*/
+}
+.smallText span{
+    display: block;
+    text-align: center;
+}
+
+#radioRegister{
+    display: block;
+    padding: 10px;
+    width: 100%;
+    background-color: white;
+    border: 1px solid #BDBDBD;;
+    
+}
+#fotoRegister{
+    display: block;
+    padding: 2px 10px;
+    width: 100%;
+    background-color: white;
+    border: 1px solid #BDBDBD;;
+    
+}
+#nomTienda{
+    display: none;
+}
+
+a, a:hover, a:active, .smallText .button {
+    text-decoration: none;
+    color: #DD3555;
+    font-weight: bold;
+}
+.smallText .button{
+    display: inline;
+    cursor: pointer;
+}
+.hidden{
+    display: none;
+}
+
+.form-horizontal input[type=text],
+        .form-horizontal input[type=number],
+        .form-horizontal input[type=date],
+        .form-horizontal select{
+            margin-bottom: 5px;
+        }
