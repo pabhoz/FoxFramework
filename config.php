@@ -7,7 +7,7 @@
     $request_uri = filter_input(INPUT_SERVER, 'REQUEST_URI');
     
     $_PROTOCOL = (!is_null($https) && $https != 'off') ? 'https://' : 'http://';
-    define('ROOT',$_PROTOCOL.preg_replace('/[^a-zA-Z0-9]/i','',$http_host)
+    define('ROOT',$_PROTOCOL.preg_replace('/[^a-zA-Z0-9]\.:/i','',$http_host)
     .str_replace('\\','/',substr(dirname(__FILE__),strlen($document_root))).'/');//Returns Project basedir
     define('REQUEST', $_PROTOCOL.$server_name.$request_uri);//Returns Request complete URL
     
