@@ -25,16 +25,16 @@
     }
     define('LOCAL_SERVER',true);
     //Archetype configuration
-    define('LIBS','../libs/');
+    define('LIBS',__DIR__.'/libs/');
     define('MYLIBS','libs/');
-    define('MODELS','../models/');
-    define('BS','../bussinesLogic/');
+    define('MODELS',__DIR__.'/models/');
+    define('BS',__DIR__.'/bussinesLogic/');
     define('MODULE','./views/modules/');
-    define('INTERFACES','../interfaces/');
-    define('BRIDGES','../bridges/');
-    define('FACTORIES','../factories/');
+    define('INTERFACES',__DIR__.'/interfaces/');
+    define('BRIDGES',__DIR__.'/bridges/');
+    define('FACTORIES',__DIR__.'/factories/');
     define('ROOT_PUBLIC',ROOT.'public/');
-    define('G_PUBLIC','../public/');
+    define('G_PUBLIC',__DIR__.'/public/');
     //Database configuration
     define('_DB_TYPE', 'mysql');
     define('_DB_HOST' , 'localhost');

@@ -1,5 +1,7 @@
  <?php
-
+ 
+ use Fox\Core;
+ 
 $url = ( isset($_GET["url"]) ) ? $_GET["url"] : "Index/index";
 $url = explode("/", $url);
 
@@ -11,6 +13,7 @@ $path = "./controllers/" . $controller . ".php";
 
 if (file_exists($path)) {
     require $path;
+    
     $controller = new $controller();
     
     if (method_exists($controller, $method)) {

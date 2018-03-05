@@ -8,6 +8,7 @@
  * 
  * @author Pabhoz
  */
+
 class Penelope {
 
     public static function arrayToJSON($array) {

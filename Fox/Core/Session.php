@@ -11,6 +11,7 @@
  *
  * @author PabloAnibal
  */
+
 class Session {
     
     public static function init(){

@@ -16,6 +16,7 @@
  * Set domain reference here (admin/shop/services)
  * 
  */
+
 $_SOURCE = "site";
 require '../config.php';
 require '../mvcBootstrap.php';

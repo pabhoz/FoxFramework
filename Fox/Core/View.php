@@ -11,6 +11,7 @@
  *
  * @author PabloAnibal
  */
+
 class View {
     
     public function render($controller,$view,$title = ''){

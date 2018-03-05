@@ -6,6 +6,7 @@
  * @author pabhoz
  * @coauthors Sebas7103 - CamiloPochi
  */
+
 class Model {
 
     private static $db;
@@ -376,20 +377,22 @@ class Model {
 
     public static function instanciate($args) {
 
-        if (count($args) > 1) {
-            $refMethod = new ReflectionMethod(get_called_class(), '__construct');
-            $params = $refMethod->getParameters();
-            $re_args = array();
-            foreach ($params as $key => $param) {
-                if ($param->isPassedByReference()) {
-                    $re_args[$param->getName()] = &$args[$param->getName()];
-                } else {
-                    $re_args[$param->getName()] = $args[$param->getName()];
+        if(is_array($args)){
+            if (count($args) > 1) {
+                $refMethod = new ReflectionMethod(get_called_class(), '__construct');
+                $params = $refMethod->getParameters();
+                $re_args = array();
+                foreach ($params as $key => $param) {
+                    if ($param->isPassedByReference()) {
+                        $re_args[$param->getName()] = &$args[$param->getName()];
+                    } else {
+                        $re_args[$param->getName()] = $args[$param->getName()];
+                    }
                 }
-            }
 
-            $refClass = new ReflectionClass(get_called_class());
-            return $refClass->newInstanceArgs((array) $re_args);
+                $refClass = new ReflectionClass(get_called_class());
+                return $refClass->newInstanceArgs((array) $re_args);
+            }
         }
     }
 

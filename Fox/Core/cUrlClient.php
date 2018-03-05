@@ -5,6 +5,7 @@
  * @author pablo bejarano
  * @pabhoz on twitter
  */
+
 class CUrlClient {
     
     function __construct($url,$rt = 1,$JSON = true) {
