@@ -11,7 +11,7 @@
  *
  * @author pabhoz
  */
-class Index_controller extends BController{
+class Index_controller extends FoxController{
 
     function __construct() {
         parent::__construct();

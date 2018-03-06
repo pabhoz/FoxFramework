@@ -184,7 +184,7 @@ body {
           </div>
 
           <div class="inner cover">
-            <h1 class="cover-heading">Frox Framework</h1>
+            <h1 class="cover-heading">Fox Framework</h1>
             <p class="lead">Foo content</p>
           </div>
 

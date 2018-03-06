@@ -33,7 +33,7 @@ $url = explode('/', filter_var( rtrim($url, '/') , FILTER_SANITIZE_URL));
 $controller = ( isset($url[0]) ) ? $url[0]."_controller" : "Index_controller";
 $method = ( isset($url[1]) && $url[1] != null) ? $url[1] : substr($controller, 0, -11);
 
-$request = new Request();
+$request = new \Fox\Core\Request();
 
 $path = "./controllers/".$controller.".php";
 

@@ -11,7 +11,7 @@
  *
  * @author pabhoz
  */
-class Login_controller extends BController{
+class Login_controller extends FoxController{
 
     function __construct() {
         parent::__construct();

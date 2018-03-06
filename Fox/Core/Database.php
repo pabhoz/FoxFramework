@@ -1,5 +1,7 @@
 <?php
 
+namespace Fox\Core;
+
 class Database extends PDO
 {
 	

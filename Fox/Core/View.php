@@ -11,6 +11,7 @@
  *
  * @author PabloAnibal
  */
+namespace Fox\Core;
 
 class View {
     

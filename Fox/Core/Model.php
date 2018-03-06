@@ -6,6 +6,7 @@
  * @author pabhoz
  * @coauthors Sebas7103 - CamiloPochi
  */
+namespace Fox\Core;
 
 class Model {
 

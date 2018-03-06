@@ -11,8 +11,13 @@
  *
  * @author pabhoz
  */
-abstract class BController extends Controller implements IController{ 
+abstract class FoxModel extends \Fox\Core\Model implements IModel{ 
 
-    abstract function index();
+    protected static $table;
+    
+    public function __construct() {
+        self::$table = get_class($this);
+    }
+    abstract public function getMyVars();
     
 }

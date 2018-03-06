@@ -1,7 +1,5 @@
  <?php
  
- use Fox\Core;
- 
 $url = ( isset($_GET["url"]) ) ? $_GET["url"] : "Index/index";
 $url = explode("/", $url);
 

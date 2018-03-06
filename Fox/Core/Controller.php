@@ -4,6 +4,7 @@
  *
  * @author Pabhoz
  */
+namespace Fox\Core;
 
 class Controller {
     

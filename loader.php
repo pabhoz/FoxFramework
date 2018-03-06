@@ -1,19 +1,12 @@
 <?php
 
-define('__FOX',__DIR__."/Fox/");
-
 spl_autoload_register(function($class){
-    
+    //print_r(str_replace('\\','/',$class));
     /*
-     *  Fox Framework Classes.
+     *  Namespaced Classes
      */
-    if(file_exists(__FOX."Core/".$class.".php")){
-        require __FOX."Core/".$class.".php";
-        return 0;
-    }
-    
-    if(file_exists(__FOX."Utils/".$class.".php")){
-        require __FOX."Utils/".$class.".php";
+    if(file_exists(__DIR__."/".str_replace('\\','/',$class).".php")){
+        require_once __DIR__."/".str_replace('\\','/',$class).".php";
         return 0;
     }
     
@@ -21,38 +14,40 @@ spl_autoload_register(function($class){
      *  User Classes
      */
     if(file_exists(LIBS.$class.".php")){
-        require LIBS.$class.".php";
+        require_once LIBS.$class.".php";
         return 0;
     }
     
     if(file_exists(MODELS.$class.".php")){
-        require MODELS.$class.".php";
+        require_once MODELS.$class.".php";
         return 0;
     }
     
     if(file_exists(BS.$class.".php")){
-        require BS.$class.".php";
+        require_once BS.$class.".php";
         return 0;
     }
     
     if(file_exists(MYLIBS.$class.".php")){
-        require MYLIBS.$class.".php";
+        require_once MYLIBS.$class.".php";
         return 0;
     }
     
     if(file_exists(INTERFACES.$class.".php")){
-        require INTERFACES.$class.".php";
+        require_once INTERFACES.$class.".php";
         return 0;
     }
     
     if(file_exists(BRIDGES.$class.".php")){
-        require BRIDGES.$class.".php";
+        require_once BRIDGES.$class.".php";
         return 0;
     }
     
     if(file_exists(FACTORIES.$class.".php")){
-        require FACTORIES.$class.".php";
+        require_once FACTORIES.$class.".php";
         return 0;
     }
+    
+    //die("$class not found.");
 
 });

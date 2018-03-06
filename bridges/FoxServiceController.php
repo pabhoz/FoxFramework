@@ -11,13 +11,10 @@
  *
  * @author pabhoz
  */
-abstract class BModel extends Model implements IModel{ 
+abstract class FoxServiceController extends \Fox\Core\ServiceController implements IServiceController{ 
 
-    protected static $table;
-    
-    public function __construct() {
-        self::$table = get_class($this);
-    }
-    abstract public function getMyVars();
+        function __construct() {
+		parent::__construct();
+	}
     
 }

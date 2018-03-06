@@ -1,5 +1,7 @@
 <?php
 
+namespace Fox\Core;
+
 class Request {
     
     public $method;

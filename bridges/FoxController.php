@@ -11,10 +11,8 @@
  *
  * @author pabhoz
  */
-abstract class BServiceController extends ServiceController implements IServiceController{ 
+abstract class FoxController extends \Fox\Core\Controller implements IController{ 
 
-        function __construct() {
-		parent::__construct();
-	}
+    abstract function index();
     
 }

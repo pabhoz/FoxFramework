@@ -24,7 +24,7 @@
      break;
     }
     define('LOCAL_SERVER',true);
-    //Archetype configuration
+    //Archetype configuration Don't touch if you don't know what are you doin'
     define('LIBS',__DIR__.'/libs/');
     define('MYLIBS','libs/');
     define('MODELS',__DIR__.'/models/');
@@ -35,17 +35,17 @@
     define('FACTORIES',__DIR__.'/factories/');
     define('ROOT_PUBLIC',ROOT.'public/');
     define('G_PUBLIC',__DIR__.'/public/');
-    //Database configuration
+    //Database configuration CHANGE THIS TO YOUR VALUES
     define('_DB_TYPE', 'mysql');
     define('_DB_HOST' , 'localhost');
     define('_DB_USER' , 'root' );
     define('_DB_PASS' , '' );
     define('_DB_NAME' , '[db_name]');
-    //Security Configuration
+    //Security Configuration SAME HERE
     define('HASH_ALGO' , 'sha512');
     define('HASH_KEY' , 'my_key');
     define('HASH_SECRET' , 'my_secret');
     define('SECRET_WORD' , 'so_secret');
     
-//Lazy Load Classes Regiser
+//Lazy Load Classes Register
 require "loader.php";

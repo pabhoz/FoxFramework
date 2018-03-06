@@ -1,18 +1,18 @@
 <?php
 
-class Index_controller extends BServiceController {
+class Index_controller extends FoxServiceController {
 
     function __construct() {
         parent::__construct();
     }
 
     public function getIndex() {
-        Request::setHeader(202, "text/html");
+        \Fox\Core\Request::setHeader(202, "text/html");
         echo "Get method Index controller";
     }
 
     public function postIndex() {
-        Request::setHeader(202, "text/html");
+        \Fox\Core\Request::setHeader(202, "text/html");
         echo "Post method Index controller";
     }
 
@@ -20,7 +20,7 @@ class Index_controller extends BServiceController {
         if (!isset($nombre) || !isset($apellido)) {
             throw new Exception('Paremetros insuficientes.');
         }
-        Request::setHeader(200, "text/plain");
+        \Fox\Core\Request::setHeader(200, "text/plain");
         echo "Hey a" . $nombre . " " . $apellido . "!";
     }
 

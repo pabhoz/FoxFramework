@@ -1,5 +1,7 @@
 <?php
 
+namespace Fox\Core;
+
 /**
  * Description of Controller
  *

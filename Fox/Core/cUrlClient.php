@@ -6,6 +6,8 @@
  * @pabhoz on twitter
  */
 
+namespace Fox\Core;
+
 class CUrlClient {
     
     function __construct($url,$rt = 1,$JSON = true) {

@@ -11,7 +11,7 @@
  *
  * @author pabhoz
  */
-class Example_controller extends BController{
+class Example_controller extends FoxController{
 
     function __construct() {
         parent::__construct();

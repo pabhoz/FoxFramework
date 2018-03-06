@@ -8,6 +8,7 @@
  * 
  * @author Pabhoz
  */
+namespace Fox\Core;
 
 class Penelope {
 
