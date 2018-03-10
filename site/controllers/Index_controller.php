@@ -5,7 +5,7 @@
  * @author pabhoz
  */
 
-class Index_controller extends Fox\Core\Controller{
+class Index_controller extends \Fox\FoxController{
    
     function __construct() {
         parent::__construct();

@@ -11,7 +11,9 @@
  *
  * @author pabhoz
  */
-abstract class FoxModel extends \Fox\Core\Model implements IModel{ 
+namespace Fox;
+
+abstract class FoxModel extends \Fox\Core\Model implements \Fox\Abstractions\IModel{ 
 
     protected static $table;
     

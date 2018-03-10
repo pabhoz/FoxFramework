@@ -1,6 +1,6 @@
 <?php
 
-class Index_controller extends FoxServiceController {
+class Index_controller extends \Fox\FoxServiceController {
 
     function __construct() {
         parent::__construct();

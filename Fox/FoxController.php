@@ -11,7 +11,9 @@
  *
  * @author pabhoz
  */
-abstract class FoxController extends \Fox\Core\Controller implements IController{ 
+namespace Fox;
+
+abstract class FoxController extends \Fox\Core\Controller implements \Fox\Abstractions\IController{ 
 
     abstract function index();
     

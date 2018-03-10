@@ -11,7 +11,7 @@
  *
  * @author pabhoz
  */
-class Login_controller extends FoxController{
+class Login_controller extends \Fox\FoxController{
 
     function __construct() {
         parent::__construct();

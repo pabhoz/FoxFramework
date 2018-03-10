@@ -11,7 +11,7 @@
  *
  * @author pabhoz
  */
-class Example_controller extends FoxController{
+class Example_controller extends \Fox\FoxController{
 
     function __construct() {
         parent::__construct();

@@ -11,7 +11,9 @@
  *
  * @author pabhoz
  */
-abstract class FoxServiceController extends \Fox\Core\ServiceController implements IServiceController{ 
+namespace Fox;
+
+abstract class FoxServiceController extends \Fox\Core\ServiceController implements \Fox\Abstractions\IServiceController{ 
 
         function __construct() {
 		parent::__construct();

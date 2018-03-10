@@ -3,6 +3,8 @@
  *
  * @author pabhoz
  */
+namespace Fox\Abstractions;
+
 interface IServiceController {
 
     public function get($method,$params = null);
