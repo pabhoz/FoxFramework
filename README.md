@@ -2,7 +2,7 @@
 
 [![Version](https://img.shields.io/badge/version-1.1.0-red.svg)]()
 [![PHP Version](https://img.shields.io/badge/PHP-7.1-red.svg)]()
-[![CLI Version](https://img.shields.io/badge/CLI-On Development-blue.svg)]()
+[![CLI Version](https://img.shields.io/badge/CLI-OnDevelopment-blue.svg)]()
 [![License](https://img.shields.io/badge/Licence-Apache--2.0-green.svg)]()
 
 ## About Fox Framework
