@@ -8,7 +8,7 @@
 ## About Fox Framework
 **Fox Framework** is a **lightweight MVC PHP framework**, is as easy as powerful and it is the best choice for a short learning curve to develop really nice and strong products. Fox is designed to attack the most common problems in the project development process, implementing multiple design patterns both in development and architectural. **Fox is not a black box**, it is **easy to use**, **to understand** and **to modify** to fit the needs of your projects.
 
-###Fox Framework features:
+### Fox Framework features:
 
 - **MVC pattern** to a better maintainibility.
 - An easy to go configuration file to define DB info and security keys.
@@ -29,17 +29,17 @@ So a fast archetype review would be:
 
 ```
 FoxFramework
-	|-- admin --> The Apanel is here
-	|---- controllers --> all the views logics are here 
-	|---- public --> admin assets here
-	|---- views --> all the admin views in folders with the controller name
-	|---- index.php --> the magic one file you should leave alone.
-	|-- bridges --> Place all your bridges here
-	|-- bussinesLogic --> All the project logic must be here
-	|-- database --> if you want to store SQL files, well, store them here
-	|-- factories --> Place all your abstract factories here
+	|-- admin                        |=>| The Apanel is here
+	|---- controllers                |=>| all the views logics are here 
+	|---- public                     |=>| admin assets here
+	|---- views                      |=>| all the admin views in folders with the controller name
+	|---- index.php                  |=>| the magic one file you should leave alone.
+	|-- bridges                      |=>| Place all your bridges here
+	|-- bussinesLogic                |=>| All the project logic must be here
+	|-- database                     |=>| if you want to store SQL files, well, store them here
+	|-- factories                    |=>| Place all your abstract factories here
 	|---- ModelFactory.php
-	|-- Fox --> All the framework core is here
+	|-- Fox                          |=>| All the framework core is here
 	|---- Core
 	|---- Utils
 	|---- Abstractions
@@ -48,25 +48,25 @@ FoxFramework
 	|---- FoxServiceController.php
 	|-- interfaces
 	|---- IModelFactory.php
-	|-- libs --> All your global (to project) libs must be here
-	|-- models --> All your models here
-	|-- public --> All your global (to project) assets be here
-	|-- Services --> The REST services area
-	|---- controllers --> all the services logics are here 
-	|---- public --> services assets here
-	|---- index.php --> the magic one file you should leave alone.
-	|---- WSD --> Services descriptors here
-	|-- site --> The website demo
-	|---- controllers --> all the views logics are here 
-	|---- public --> site assets here
-	|---- views --> all the site views in folders with the controller name
-	|---- index.php --> the magic one file you should leave alone.
-	|-- tests --> The tests with codeception!
+	|-- libs                         |=>| All your global (to project) libs must be here
+	|-- models                       |=>| All your models here
+	|-- public                       |=>| All your global (to project) assets be here
+	|-- Services                     |=>| The REST services area
+	|---- controllers                |=>| all the services logics are here 
+	|---- public                     |=>| services assets here
+	|---- index.php                  |=>| the magic one file you should leave alone.
+	|---- WSD                        |=>| Services descriptors here
+	|-- site                         |=>| The website demo
+	|---- controllers                |=>| all the views logics are here 
+	|---- public                     |=>| site assets here
+	|---- views                      |=>| all the site views in folders with the controller name
+	|---- index.php                  |=>| the magic one file you should leave alone.
+	|-- tests                        |=>| The tests with codeception!
 	|-- codeception.yml
-	|-- config.php --> Database, encryption and gloabals are here
-	|-- loader.php --> Autoload is managed here
-	|-- mvcBootstrap.php --> MVC magic starts here
-	|-- restBootstrap.php --> REST magic starts here
+	|-- config.php                   |=>| Database, encryption and gloabals are here
+	|-- loader.php                   |=>| Autoload is managed here
+	|-- mvcBootstrap.php             |=>| MVC magic starts here
+	|-- restBootstrap.php            |=>| REST magic starts here
 ```
 
 ## Learning Fox Framework
