@@ -350,9 +350,9 @@ class Model {
 
     public function toArray() {
         //Get reflection
-        $reflection = new ReflectionObject($this);
+        $reflection = new \ReflectionObject($this);
         //Get Public properties to avoid getter methods
-        $properties = $reflection->getProperties(ReflectionProperty::IS_PUBLIC);
+        $properties = $reflection->getProperties(\ReflectionProperty::IS_PUBLIC);
         $arr = [];
         $isPublic = null;
         foreach ($this->getMyVars() as $key => $value) {
@@ -380,7 +380,7 @@ class Model {
 
         if(is_array($args)){
             if (count($args) > 1) {
-                $refMethod = new ReflectionMethod(get_called_class(), '__construct');
+                $refMethod = new \ReflectionMethod(get_called_class(), '__construct');
                 $params = $refMethod->getParameters();
                 $re_args = array();
                 foreach ($params as $key => $param) {
@@ -391,14 +391,14 @@ class Model {
                     }
                 }
 
-                $refClass = new ReflectionClass(get_called_class());
+                $refClass = new \ReflectionClass(get_called_class());
                 return $refClass->newInstanceArgs((array) $re_args);
             }
         }
     }
 
     public static function getKeys() {
-        $refMethod = new ReflectionMethod(get_called_class(), '__construct');
+        $refMethod = new \ReflectionMethod(get_called_class(), '__construct');
         $params = $refMethod->getParameters();
         $keys = [];
         foreach ($params as $key => $param) {

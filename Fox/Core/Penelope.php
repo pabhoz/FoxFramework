@@ -14,7 +14,7 @@ class Penelope {
 
     public static function arrayToJSON($array) {
        
-        array_walk_recursive($array, 'Penelope::encode_items');
+        array_walk_recursive($array, '\Fox\Core\Penelope::encode_items');
         return (!LOCAL_SERVER)? utf8_decode(json_encode($array, JSON_UNESCAPED_UNICODE)) 
                 : json_encode($array, JSON_UNESCAPED_UNICODE);
     }
