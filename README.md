@@ -1,6 +1,6 @@
 # Fox Framework
 
-[![Version](https://img.shields.io/badge/version-1.1.0-red.svg)]()
+[![Version](https://img.shields.io/badge/version-1.2.1-red.svg)]()
 [![PHP Version](https://img.shields.io/badge/PHP-7.1-red.svg)]()
 [![CLI Version](https://img.shields.io/badge/CLI-OnDevelopment-blue.svg)]()
 [![License](https://img.shields.io/badge/Licence-Apache--2.0-green.svg)]()
@@ -68,6 +68,206 @@ FoxFramework
 	|-- mvcBootstrap.php             |=>| MVC magic starts here
 	|-- restBootstrap.php            |=>| REST magic starts here
 ```
+
+## FoxModel a swift ORM
+Now FoxModel has been redisegned to be even more semantic featuring:
+
+###Relation types
+Our ORM currently supports 4 relation types:
+
+####One to One
+This is the very basic relation you can define. For example, the `KonohaVillage` model have a current one `Hokage`; this can be define as this:
+
+```php
+	$konohaVillage->hasOne("CurrentHokage",$hokage);
+```
+where `CurrentHogage` is a relation rule defined at `KonohaVillage` class like this:
+
+```php
+class KonohaVillage extends \Fox\FoxModel {
+
+    private $hasOne = array(
+      'CurrentHokage'=>array(
+          'class'=>'Hokage',
+          'join_as'=>'id',
+          'join_with'=>'village_id'
+          )
+      );
+      
+     public function getHasOne(){
+     	return $this->hasOne;
+     }
+
+}
+```
+once you call for the relation to be done, don't forget to create your brand new object with its **one to one** relation: `$konohaVillage->create();`.
+
+Remember, the One to One A.K.A hasOne **relation rule template** is this:
+
+```php
+private $hasOne = array(
+	'RuleName'=>array(
+		'class'=>'[Obj class expected]',
+       'join_as'=>'[my primary key attr name]',
+       'join_with'=>'[foreign key name in the other table]'
+    )
+);
+```
+
+####Inverse One to One
+So, if you want to define the inverse relation on the `Hokage` model, you can use `belongsTo` method:
+
+```php
+	$hokage->belongsTo("HokaguePositionAt",$konohaVillage);
+```
+where `HokaguePositionAt` is a relation rule defined at `Hokage` class like this:
+
+```php
+class Hokage extends \Fox\FoxModel {
+
+    private $belongsTo = array(
+        
+            'HokaguePositionAt' => array(
+                'class' => 'KonohaVillage',
+                'join_as' => 'id',
+                'join_with' => 'village_id'
+            )
+        
+     );
+      
+     public function getBelongsTo(){
+     	return $this->belongsTo;
+     }
+
+}
+```
+once you call for the relation to be done, don't forget to create your brand new object with its **one to one** relation: `$konohaVillage->create();`.
+
+Remember, the Belongs to A.K.A belongsTo **relation rule template** is this:
+
+```php
+private $belongsTo = array(
+   'Country' => array(
+   		'class' => '[Obj class expected]',
+       'join_as' => '[primary key name of the foreign key]',
+       'join_with' => '[foreign key name in my table]'
+	)
+);
+```
+
+####One to Many
+Let's define a one to many relation between a `State` model and `City` model:
+
+```php
+	$state->hasMany("Cities",$city);
+```
+where "Cities" is a relation rule defined at `State` class like this:
+
+```php
+class State extends \Fox\FoxModel {
+
+    private $hasMany = array(
+      'Cities'=>array(
+          'class'=>'City',
+          'join_as'=>'id',
+          'join_with'=>'state_id'
+          )
+        );
+      
+     public function getHasMany(){
+     	return $this->hasMany;
+     }
+
+}
+```
+once you call for the relation to be done, don't forget to create your brand new object with its **one to one** relation: `$state->create();`.
+
+Remember, the One to Many A.K.A hasMany **relation rule template** is this:
+
+```php
+private $belongsTo = array(
+
+	'RuleName' => array(
+   		'class' => '[Obj class expected]',
+       'join_as' => '[primary key name of the foreign key]',
+       'join_with' => '[foreign key name in my table]'
+	)
+);
+```
+####Many to Many
+Let's define a many to many relation between a `User` model and `Rol` model:
+
+```php
+	$user->belongsToMany("UserRols",$rol);
+```
+where "UserRols" is a relation rule defined at `User` class like this:
+
+```php
+class State extends \Fox\FoxModel {
+
+    private $belongsToMany = array(
+        'UserRols'=>array(
+            'class'=>'Rol',
+            'my_key'=>'id',
+            'other_key'=>'id',
+            'join_as'=>'user_id',
+            'join_with'=>'rol_id',
+            'join_table'=>'user_rols',
+            'data'=> array(
+               '[table attr]'=>'[variable type demo]' // 'aFloat' => 0.0, 'aString' => '' 
+              )
+            )
+        );
+      
+     public function getBelongsToMany(){
+     	return $this-> belongsToMany;
+     }
+
+}
+```
+once you call for the relation to be done, don't forget to update your object with its **many to many** relation: `$user->update();`.
+
+Remember, the Many to Many A.K.A belongsToMany **relation rule template** is this:
+
+```php
+private $belongsToMany = array(
+        'RuleName'=>array(
+            'class'=>'[Obj class expected]',
+            'my_key'=>'[my primary key attr]',
+            'other_key'=>'[the other entity primary key attr]',
+            'join_as'=>'[my attr at n to n table]',
+            'join_with'=>'[the other attr at n to n table]',
+            'join_table'=>'[N to N table name]',
+            'data'=> array(
+               '[table attr]'=>'[variable type demo]' // 'aFloat' => 0.0, 'aString' => '' 
+              )
+            )
+        );
+```
+
+###Queriying Relations
+Now you can query for your defined relations like this:
+
+```php
+	$cali = State::getBy("name","CALIFORNIA");
+	$caliCities = $cali->has("many","Cities")); // 1st param could be "one" or "many", 2nd param is the defined rule name.
+```
+it will return all the California state cities at your database as an object array.
+
+###Populating your objects
+You can also populate your objects choosing by populate all its defined relations or just one of them like this:
+
+```php
+	$cali = State::getBy("name","CALIFORNIA");
+	$cali->populate("many","Cities");
+```
+it will set a new attribute to the object called as the rule, in this case it will be called `cities`.
+
+```php
+	$cali = State::getBy("name","CALIFORNIA");
+	$cali->populateAll();
+```
+it will look for all the relations rules defined and populate all adding attributes to the object called as the rule name.
 
 ## Learning Fox Framework
 We are currently working on our brand new (and super lit) documentation by video tutorials and classic web documentation and tutorials, in fact all our current documentation is writed in spanish so we are translating it to support both English and Spanish langs.

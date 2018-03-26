@@ -55,9 +55,9 @@ if(file_exists($path)){
                 $controller->{$request->method}($method);
             }
         }else{
-            Request::error("Método no disponible",405);
+            \Fox\Core\Request::error("Método no disponible",405);
         }
     } 
 }else{
-    Request::error("Petición no encontrada",404);
+    \Fox\Core\Request::error("Petición no encontrada",404);
 }
