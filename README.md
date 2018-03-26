@@ -72,10 +72,10 @@ FoxFramework
 ## FoxModel a swift ORM
 Now FoxModel has been redisegned to be even more semantic featuring:
 
-###Relation types
+### Relation types
 Our ORM currently supports 4 relation types:
 
-####One to One
+#### One to One
 This is the very basic relation you can define. For example, the `KonohaVillage` model have a current one `Hokage`; this can be define as this:
 
 ```php
@@ -114,7 +114,7 @@ private $hasOne = array(
 );
 ```
 
-####Inverse One to One
+#### Inverse One to One
 So, if you want to define the inverse relation on the `Hokage` model, you can use `belongsTo` method:
 
 ```php
@@ -155,7 +155,7 @@ private $belongsTo = array(
 );
 ```
 
-####One to Many
+#### One to Many
 Let's define a one to many relation between a `State` model and `City` model:
 
 ```php
@@ -194,7 +194,7 @@ private $belongsTo = array(
 	)
 );
 ```
-####Many to Many
+#### Many to Many
 Let's define a many to many relation between a `User` model and `Rol` model:
 
 ```php
@@ -245,7 +245,7 @@ private $belongsToMany = array(
         );
 ```
 
-###Queriying Relations
+### Queriying Relations
 Now you can query for your defined relations like this:
 
 ```php
@@ -254,7 +254,7 @@ Now you can query for your defined relations like this:
 ```
 it will return all the California state cities at your database as an object array.
 
-###Populating your objects
+### Populating your objects
 You can also populate your objects choosing by populate all its defined relations or just one of them like this:
 
 ```php
