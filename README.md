@@ -1,6 +1,6 @@
 # Fox Framework
 
-[![Version](https://img.shields.io/badge/version-1.2.1-red.svg)]()
+[![Version](https://img.shields.io/badge/version-1.2.2-red.svg)]()
 [![PHP Version](https://img.shields.io/badge/PHP-7.1-red.svg)]()
 [![CLI Version](https://img.shields.io/badge/CLI-OnDevelopment-blue.svg)]()
 [![License](https://img.shields.io/badge/Licence-Apache--2.0-green.svg)]()
@@ -73,7 +73,7 @@ FoxFramework
 Now FoxModel has been redisegned to be even more semantic featuring:
 
 ### Relation types
-Our ORM currently supports 4 relation types:
+Our ORM currently supports 4 relations types:
 
 #### One to One
 This is the very basic relation you can define. For example, the `KonohaVillage` model have a current one `Hokage`; this can be define as this:

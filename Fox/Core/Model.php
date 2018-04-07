@@ -96,7 +96,6 @@ class Model {
         $sql = "SELECT * FROM " . static::$table . " WHERE " . $field . " = :" . $field;
         //print_r($sql);
         $results = self::$db->select($sql, array(":" . $field => $value));
-        
         if($objects && !empty($results)){
             $results = self::toObject($results);
         }
@@ -130,17 +129,16 @@ class Model {
         return $results;
     }
     
-    public static function getById($id) {
+    public static function getById($id,$objects = true) {
         self::setTableForStaticCall();
-        $self = self::where("id", $id);
+        $self = self::where("id", $id, $objects);
         $result = array_shift($self);
         return $result;
     }
 
     public static function getBy($field, $data) {
         self::setTableForStaticCall();
-        $data = array_shift(self::where($field, $data));
-        $result = self::instanciate($data);
+        $result = array_shift(self::where($field, $data));
         return $result;
     }
 
@@ -234,7 +232,7 @@ class Model {
         return $log;
     }
     
-    private function processHMRData($data, &$toSave) {
+    private static function processHMRData($data, &$toSave) {
 
         foreach ($data as $key => $atributo) {
             $toSave[$key] = $atributo;
@@ -258,12 +256,12 @@ class Model {
                     );
 
                     if (isset($data)) {
-                        $this->processHMRData($data, $toSave);
+                        self::processHMRData($data, $toSave);
                     }
 
                     $rule['relationships'][] = $toSave;
                     $belongsToMany[$rName] = $rule;
-                    $this->setHas_many($belongsToMany);
+                    $this->setBelongsToMany($belongsToMany);
                 } else {
                     print("Primary keys must be defined.");
                 }
