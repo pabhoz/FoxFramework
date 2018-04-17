@@ -103,9 +103,9 @@ class Model {
     }
 
     public static function whereR($attr, $field, $value, $tableR) {
-        self::setTableForStaticCall();
+        self::setTableForStaticCall($tableR);
         self::getConnection();
-        $sql = "SELECT " . $attr . " FROM " . $tableR . " WHERE " . $field . " = :" . $field;
+        $sql = "SELECT " . $attr . " FROM " . static::$table . " WHERE " . $field . " = :" . $field;
         //print_r($sql);
         $results = self::$db->select($sql, array(":" . $field => $value));
 
@@ -126,6 +126,15 @@ class Model {
         self::getConnection();
         $sql = "SELECT * FROM " . static::$table . " WHERE " . $condition;
         $results = self::$db->select($sql, $values);
+        return $results;
+    }
+    
+    public static function getIn($field,$range) {
+        self::setTableForStaticCall();
+        self::getConnection();
+        $sql = "SELECT * FROM " . static::$table . " WHERE " . $field . " IN(".$range.")";
+        $results = self::$db->select($sql);
+
         return $results;
     }
     
@@ -365,12 +374,26 @@ class Model {
         return $r;
     }
     
+    public function belongsTM($rName){
+        
+        $rule = $this->getBelongsToMany()[$rName];
+        $r = self::whereR("*", $rule['join_as'], 
+                $this->{"get". ucfirst($rule["my_key"])}(), 
+                $rule["join_table"]);
+        return $r;
+    }
+    
     /******************************************+*******************************
     ** OBJECT POPULATION
     *************************************************************************/
     
     public function populate($rType,$rName){
-        $objs = $this->has($rType, $rName);
+
+        if($rType == "belongsToMany"){
+            $objs = $this->belongsTM($rName);
+        }else{
+            $objs = $this->has($rType, $rName);
+        }
         $this->{lcfirst($rName)} = $objs;
     }
     
