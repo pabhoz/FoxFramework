@@ -358,7 +358,7 @@ class Model {
         $rule = null;
         switch ($rType) {
             case "one":
-                $$rule = $this->getHasOne();
+                $rule = $this->getHasOne();
                 break;
             case "many":
                 $rule = $this->getHasMany();
