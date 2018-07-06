@@ -434,10 +434,25 @@ class Model {
                $this->populate("one",$key);
             }
         }
+        
+        //populate all belongs to rules
+        if(method_exists($this,"getBelongsTo")){
+            foreach ($this->getHasOne() as $key => $rule) {
+               $this->populate("from",$key);
+            }
+        }
+        
         //populate all has many rules
         if(method_exists($this,"getHasMany")){
             foreach ($this->getHasMany() as $key => $rule) {
                $this->populate("many",$key);
+            }
+        }
+        
+        //populate all m to n rules
+        if(method_exists($this,"getBelongsToMany")){
+            foreach ($this->getHasOne() as $key => $rule) {
+               $this->populate("belongsToMany",$key);
             }
         }
     }
