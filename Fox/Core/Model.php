@@ -156,7 +156,8 @@ class Model {
 
     public static function getBy($field, $data) {
         self::setTableForStaticCall();
-        $result = array_shift(self::where($field, $data));
+        $smth = self::where($field, $data);
+        $result = array_shift($smth);
         return $result;
     }
 
@@ -369,6 +370,8 @@ class Model {
     
     public function has($rType,$rName){
         $rule = null;
+        $has = true;
+        
         switch ($rType) {
             case "one":
                 $rule = $this->getHasOne();
@@ -376,11 +379,22 @@ class Model {
             case "many":
                 $rule = $this->getHasMany();
                 break;
+            case "from":
+                $rule = $this->getBelongsTo();
+                $has = false;
+                break;
         }
+        
         if(isset($rule[$rName])){
-            $class = $rule[$rName]["class"];
-            $r = $class::where($rule[$rName]["join_with"],
-                    $this->{"get".ucfirst($rule[$rName]["join_as"])}());
+            if($has){
+                $class = $rule[$rName]["class"];
+                $r = $class::where($rule[$rName]["join_with"],
+                $this->{"get".ucfirst($rule[$rName]["join_as"])}());
+            }else{
+                $class = $rule[$rName]["class"];
+                $r = $class::where($rule[$rName]["join_as"],
+                $this->{"get".ucfirst($rule[$rName]["join_with"])}());
+            }
         }else{
             $r = null;
         }
@@ -404,10 +418,12 @@ class Model {
 
         if($rType == "belongsToMany"){
             $objs = $this->belongsTM($rName);
+            $this->{lcfirst($rName)} = $objs;
         }else{
             $objs = $this->has($rType, $rName);
+            $this->{"set".ucfirst($rName)}($objs);
         }
-        $this->{lcfirst($rName)} = $objs;
+        
     }
     
     public function populateAll(){
