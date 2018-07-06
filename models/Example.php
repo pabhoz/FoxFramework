@@ -80,20 +80,20 @@ class Example extends \Fox\FoxModel {
       $this->attr2 = $value;
   }
 
-  function getHas_one() {
-      return $this->has_one;
+  function getHasOne() {
+      return $this->hasOne;
   }
 
-  function getHas_many() {
-      return $this->has_many;
+  function getHasMany() {
+      return $this->hasMany;
   }
 
-  function setHas_one($has_one) {
-      $this->has_one = $has_one;
+  function setHasOne($hasOne) {
+      $this->hasOne = $hasOne;
   }
 
-  function setHas_many($has_many) {
-      $this->has_many = $has_many;
+  function setHasMany($hasMany) {
+      $this->hasMany = $hasMany;
   }
 
     public function getMyVars(){
