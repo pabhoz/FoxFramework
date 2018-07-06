@@ -129,6 +129,15 @@ class Model {
         return $results;
     }
     
+    public static function getOrderedBy($field, $value, $by,$order="DESC") {
+        self::setTableForStaticCall();
+        self::getConnection();
+        $sql = "SELECT * FROM " . static::$table . " WHERE $field=:$field ORDER BY `$by` $order";
+        $results = self::$db->select($sql,[$field=>$value]);
+
+        return $results;
+    }
+    
     public static function getIn($field,$range) {
         self::setTableForStaticCall();
         self::getConnection();
@@ -165,13 +174,15 @@ class Model {
         self::getConnection();
 
         $values = $this->getMyVars($this);
+        unset($values["_table"]);
+        
         $belongsToMany = self::checkRelationship("belongsToMany", $values);
         
         foreach (self::$simpleRelations as $relation) {
             self::checkRelationship($relation, $values);
         }
         
-        $result = self::$db->insert(static::$table, $values);
+        $result = self::$db->insert($this->getTable(), $values);
 
         if ($result === true) {
             $response = array('error' => 0, 'getID' => self::$db->lastInsertId(), 'msg' => get_class($this) . ' Created');
@@ -196,6 +207,8 @@ class Model {
         self::getConnection();
 
         $values = $this->getMyVars($this);
+        unset($values["_table"]);
+        
         $belongsToMany = self::checkRelationship("belongsToMany", $values);
         //Logger::debug("Has_many",$belongsToMany,$dump = false,$method = false);
         self::checkRelationship("hasOne", $values);
@@ -203,9 +216,9 @@ class Model {
 
 
         if ($where) {
-            $result = self::$db->update(static::$table, $values, $where);
+            $result = self::$db->update($this->getTable(), $values, $where);
         } else {
-            $result = self::$db->update(static::$table, $values, "id = " . $values["id"]);
+            $result = self::$db->update($this->getTable(), $values, "id = " . $values["id"]);
         }
 
         if ($result) {
@@ -286,15 +299,15 @@ class Model {
             $rule = $relacion[$rName];
             if (get_class($obj) == $rule["class"]) {
                 switch ($relation) { 
-                    case "hasOne": print"hasOne";
+                    case "hasOne": //print"hasOne";
                         $this->{"set" . ucfirst($rule["join_with"])}($obj->{"get" . 
                             ucfirst($rule["join_as"])}());
                         break;
-                    case "hasMany": print"hasMany";
+                    case "hasMany": //print"hasMany";
                         $obj->{"set" . ucfirst($rule["join_with"])}($this->{"get" . 
                             ucfirst($rule["join_as"])}());
                         break;
-                    case "belongsTo": print"belongsTo";
+                    case "belongsTo": //print"belongsTo";
                         $this->{"set" . ucfirst($rule["join_with"])}($obj->{"get" . 
                             ucfirst($rule["join_as"])}());
                         break;

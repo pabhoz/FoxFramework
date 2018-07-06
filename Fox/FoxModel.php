@@ -16,10 +16,17 @@ namespace Fox;
 abstract class FoxModel extends \Fox\Core\Model implements \Fox\Abstractions\IModel{ 
 
     protected static $table;
+    protected $_table;
     
     public function __construct() {
         self::$table = get_class($this);
+        $this->_table = get_class($this);
     }
+    
     abstract public function getMyVars();
+    
+    public function getTable() {
+        return $this->_table;
+    }
     
 }
