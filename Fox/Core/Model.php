@@ -437,7 +437,7 @@ class Model {
         
         //populate all belongs to rules
         if(method_exists($this,"getBelongsTo")){
-            foreach ($this->getHasOne() as $key => $rule) {
+            foreach ($this->getBelongsTo() as $key => $rule) {
                $this->populate("from",$key);
             }
         }
@@ -451,7 +451,7 @@ class Model {
         
         //populate all m to n rules
         if(method_exists($this,"getBelongsToMany")){
-            foreach ($this->getHasOne() as $key => $rule) {
+            foreach ($this->getBelongsToMany() as $key => $rule) {
                $this->populate("belongsToMany",$key);
             }
         }
@@ -521,7 +521,11 @@ class Model {
                     $arr[$key] = $value->toArray();
                 } else {
                     if (!$isPublic) {
-                        $arr[$key] = $this->{"get" . $key}();
+                        if($key != "_table"){
+                           $arr[$key] = $this->{"get" . $key}(); 
+                        }else{
+                           $arr[$key] = $this->getTable();
+                        }
                     } else {
                         $arr[$key] = $value;
                     }
