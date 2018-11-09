@@ -301,7 +301,7 @@ class Model {
             if (get_class($obj) == $rule["class"]) {
                 switch ($relation) { 
                     case "hasOne": //print"hasOne";
-                        $this->{"set" . ucfirst($rule["join_with"])}($obj->{"get" . 
+                        $obj->{"set" . ucfirst($rule["join_with"])}($this->{"get" . 
                             ucfirst($rule["join_as"])}());
                         break;
                     case "hasMany": //print"hasMany";
