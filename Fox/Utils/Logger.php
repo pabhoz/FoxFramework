@@ -1,8 +1,10 @@
 <?php
 
+namespace Fox\Utils;
+
 Class Logger{
 
-	public function debug($name,$var,$dump = false,$method = false){
+	public static function debug($name,$var,$dump = false,$method = false){
 		$bt = debug_backtrace();
 		$caller = array_shift($bt);
 		$m = '';
@@ -15,8 +17,17 @@ Class Logger{
 		if($dump) var_dump($var); else print_r($var);
 		print('</br></br><b>End of debug</b></br></br>');	
 	}
+        
+	public static function dd($var,$die = false){
+	
+		echo "<pre>";
+        print_r($var);
+        echo "</pre>";
+		if($die){ die(); }
+		
+    }
 
-	public function msg($msg,$method = false){
+	public static function msg($msg,$method = false){
 		$bt = debug_backtrace();
 		$caller = array_shift($bt);
 		$m = '';
@@ -28,7 +39,7 @@ Class Logger{
 			$caller['line'].'</b> '.$m.': "'.$msg.'"</br></br>');
 	}
 
-	public function alert($msg,$var,$method = false){
+	public static function alert($msg,$var,$method = false){
 		$bt = debug_backtrace();
 		$caller = array_shift($bt);
 		$m = '';

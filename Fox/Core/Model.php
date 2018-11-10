@@ -414,45 +414,51 @@ class Model {
     ** OBJECT POPULATION
     *************************************************************************/
     
-    public function populate($rType,$rName){
+    public function populate($rType,$rName,$array = false){
 
         if($rType == "belongsToMany"){
             $objs = $this->belongsTM($rName);
-            $this->{lcfirst($rName)} = $objs;
         }else{
             $objs = $this->has($rType, $rName);
-            $this->{"set".ucfirst($rName)}($objs);
         }
+        if($array){
+            foreach ($objs as $key => $obj) {
+                $objs[$key] = $obj->toArray();
+            }
+        }
+        //TODO: if class has $obj as attr, assign it to it (setAttr) isntead of
+        //using arrays;
+        $this->{lcfirst($rName)} = $objs;
         
     }
     
-    public function populateAll(){
+    public function populateAll($array=false){
         
         //populate all has one rules
         if(method_exists($this,"getHasOne")){
             foreach ($this->getHasOne() as $key => $rule) {
-               $this->populate("one",$key);
+               $this->populate("one",$key,$array);
             }
         }
         
         //populate all belongs to rules
         if(method_exists($this,"getBelongsTo")){
             foreach ($this->getBelongsTo() as $key => $rule) {
-               $this->populate("from",$key);
+               $this->populate("from",$key,$array);
             }
         }
         
         //populate all has many rules
         if(method_exists($this,"getHasMany")){
             foreach ($this->getHasMany() as $key => $rule) {
-               $this->populate("many",$key);
+               $this->populate("many",$key,$array);
             }
         }
         
         //populate all m to n rules
         if(method_exists($this,"getBelongsToMany")){
             foreach ($this->getBelongsToMany() as $key => $rule) {
-               $this->populate("belongsToMany",$key);
+               $this->populate("belongsToMany",$key,$array);
             }
         }
     }
